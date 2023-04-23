@@ -23,7 +23,7 @@ namespace Zachet2_stud_
         }
         public string Info()
         {
-            string s = lastname + "\n" + firstname + "\n" + group + "\n" + exam + "\n" + coursework;
+            string s = lastname + " " + firstname + " " + group + " " + exam + " " + coursework;
             return s;
         }
     }

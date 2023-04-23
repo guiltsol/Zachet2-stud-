@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
+using System.Runtime.InteropServices;
+using Excel = Microsoft.Office.Interop.Excel;
 namespace Zachet2_stud_
 {
     public partial class Form1 : Form
@@ -26,6 +28,20 @@ namespace Zachet2_stud_
         {
             Form2 f = new Form2();
             f.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(@"C:\Users\Администратор\source\repos\Zachet2(stud)\student.txt"))
+            {
+                Form3 f = new Form3();
+                f.Show();
+            }
+            else
+            {
+                MessageBox.Show("Файла нет");
+                return;
+            }
         }
     }
 }

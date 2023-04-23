@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.Office.Interop;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace Zachet2_stud_
 {
@@ -111,7 +114,27 @@ namespace Zachet2_stud_
 
             MessageBox.Show(s.Info());
 
+            String fileName = "";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = "txt";
+            saveFileDialog.Title = "Сохранить успеваемость";
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            saveFileDialog.FileName = @"C:\Users\Администратор\source\repos\Zachet2(stud)\student.txt";
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                fileName = saveFileDialog.FileName;// Сохранить имя файла
+                StreamWriter streamwriter = new StreamWriter(fileName, true, System.Text.Encoding.GetEncoding("utf-8"));
+                streamwriter.WriteLine(s.Info());
+
+                streamwriter.Close();
+
+                pictureBox1.Image.Save(@"C:\Users\Администратор\source\repos\Zachet2(stud)\img\" + lastname.Text + ".jpg");
+
+            }
+
         }
+
         private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
         {
             double sred_ball = 0;
